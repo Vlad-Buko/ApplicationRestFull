@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit books</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
+    <label for="nameBook">Введите название книги: </label>
+    <input type="text" th:field="*{title}" id="nameBook"/>
+    <div style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name Error</div>
+    <br/>
+    <label for="author">Введите автора: </label>
+    <input type="text" th:field="*{author}" id="author"/>
+    <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</div>
+    <br/>
+    <label for="age">Введите год издания: </label>
+    <input type="text" th:field="*{year}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Age Error</div>
+    <br/>
+    <input type="submit" value="Обновить/Исправить книгу"/>
+    <br/>
+    <a href="/books">Вернуться к списку книг</a>
+</form>
+</body>
+</html>
